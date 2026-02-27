@@ -1,6 +1,6 @@
 "use strict";
 
-const cpfEhValido = require("../../utils/validaCpfHelper.js");
+const validarCpf = require("../../utils/validaCpfHelper.js");
 
 const { Model, where } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
@@ -40,8 +40,9 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         validate: {
           cpfEhValido: (cpf) => {
-            if (!cpfEhValido(cpf)) {
-              throw new Error("CPF inválido");
+            const resultadoValidacao = validarCpf(cpf);
+            if (resultadoValidacao.ehValido === false) {
+              throw new Error(resultadoValidacao.motivo);
             }
           },
         },
