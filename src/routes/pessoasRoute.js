@@ -13,11 +13,15 @@ router.get("/pessoas/:id", (req, res, next) => pessoaController.pegaUmPorId(req,
 router.post("/pessoas", (req, res, next) => pessoaController.criaNovo(req, res, next));
 router.put("/pessoas/:id", (req, res, next) => pessoaController.atualiza(req, res, next));
 router.delete("/pessoas/:id", (req, res, next) => pessoaController.exclui(req, res, next));
+
 router.get("/pessoas/:estudante_id/matriculas", (req, res, next) =>
   pessoaController.pegaMatriculasAtivas(req, res, next),
 );
 router.get("/pessoas/:estudante_id/matriculas/todas", (req, res, next) =>
   pessoaController.pegaTodasAsMatriculas(req, res, next),
+);
+router.get("/pessoas/:estudante_id/matriculas/ativas", (req, res, next) =>
+  matriculaController.pegaMatriculasPorEstudante(req, res, next),
 );
 router.get("/pessoas/:estudante_id/matriculas/:id", (req, res, next) => matriculaController.pegaUm(req, res, next));
 router.post("/pessoas/:estudante_id/matriculas", (req, res, next) => matriculaController.criaNovo(req, res, next));
