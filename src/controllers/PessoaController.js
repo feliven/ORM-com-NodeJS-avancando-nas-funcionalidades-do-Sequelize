@@ -9,9 +9,9 @@ class PessoaController extends Controller {
   }
 
   async pegaMatriculasAtivas(req, res, next) {
-    const { estudanteId } = req.params;
+    const { estudante_id } = req.params;
     try {
-      const listaMatriculas = await pessoaServices.pegaMatriculasAtivasPorEstudante(Number(estudanteId));
+      const listaMatriculas = await pessoaServices.pegaMatriculasAtivasPorEstudante(Number(estudante_id));
       return res.status(200).json(listaMatriculas);
     } catch (error) {
       return res.status(500).json({ erro: error.message });
@@ -19,9 +19,9 @@ class PessoaController extends Controller {
   }
 
   async pegaTodasAsMatriculas(req, res, next) {
-    const { estudanteId } = req.params;
+    const { estudante_id } = req.params;
     try {
-      const listaMatriculas = await pessoaServices.pegaTodasMatriculasPorEstudante(Number(estudanteId));
+      const listaMatriculas = await pessoaServices.pegaTodasMatriculasPorEstudante(Number(estudante_id));
       return res.status(200).json(listaMatriculas);
     } catch (error) {
       return res.status(500).json({ erro: error.message });
