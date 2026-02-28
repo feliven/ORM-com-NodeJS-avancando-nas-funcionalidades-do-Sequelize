@@ -12,6 +12,9 @@ router.get("/pessoas/all", (req, res, next) => pessoaController.pegaTodasAsPesso
 router.get("/pessoas/:id", (req, res, next) => pessoaController.pegaUmPorId(req, res, next));
 router.post("/pessoas", (req, res, next) => pessoaController.criaNovo(req, res, next));
 router.put("/pessoas/:id", (req, res, next) => pessoaController.atualiza(req, res, next));
+router.put("/pessoas/:estudante_id/matriculas/cancelar", (req, res, next) =>
+  pessoaController.cancelaRegistroEstudante(req, res, next),
+);
 router.delete("/pessoas/:id", (req, res, next) => pessoaController.exclui(req, res, next));
 
 router.get("/pessoas/:estudante_id/matriculas", (req, res, next) =>
