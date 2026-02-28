@@ -23,6 +23,7 @@ router.get("/pessoas/:estudante_id/matriculas/todas", (req, res, next) =>
 router.get("/pessoas/:estudante_id/matriculas/ativas", (req, res, next) =>
   matriculaController.pegaMatriculasPorEstudante(req, res, next),
 );
+router.get("/pessoas/matriculas/lotadas", (req, res, next) => matriculaController.pegaCursosLotados(req, res, next));
 router.get("/pessoas/:estudante_id/matriculas/:id", (req, res, next) => matriculaController.pegaUm(req, res, next));
 router.post("/pessoas/:estudante_id/matriculas", (req, res, next) => matriculaController.criaNovo(req, res, next));
 router.put("/pessoas/:estudante_id/matriculas/:id", (req, res, next) => matriculaController.atualiza(req, res, next));
